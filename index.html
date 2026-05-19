@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name — Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF9F6;
+      --ink: #1a1a18;
+      --ink-muted: #5f5e5a;
+      --accent: #185FA5;
+      --accent-light: #E6F1FB;
+      --border: rgba(0,0,0,0.1);
+      --card-bg: #ffffff;
+      --ff-serif: 'DM Serif Display', Georgia, serif;
+      --ff-sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--ff-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,249,246,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo { font-family: var(--ff-serif); font-size: 18px; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 2rem; font-size: 14px; color: var(--ink-muted); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 13px; font-weight: 500;
+      padding: 7px 18px; border-radius: 100px;
+      border: 0.5px solid var(--ink);
+      background: var(--ink); color: var(--cream);
+      cursor: pointer; transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.8; }
+
+    /* ── LAYOUT WRAPPER ── */
+    .wrapper { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 7rem; padding-bottom: 5rem;
+      display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 3rem;
+    }
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--accent);
+    }
+    .hero h1 {
+      font-family: var(--ff-serif); font-size: clamp(2.4rem, 5vw, 3.5rem);
+      line-height: 1.1; letter-spacing: -1px; margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub { font-size: 16px; color: var(--ink-muted); max-width: 480px; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: var(--ff-sans); font-size: 14px; font-weight: 500;
+      padding: 10px 22px; border-radius: 100px;
+      background: var(--ink); color: var(--cream); border: none; cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.8; }
+    .btn-ghost {
+      font-family: var(--ff-sans); font-size: 14px;
+      padding: 10px 22px; border-radius: 100px;
+      background: transparent; color: var(--ink); border: 0.5px solid var(--border);
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-ghost:hover { background: rgba(0,0,0,0.04); }
+
+    /* ── AVATAR ── */
+    .hero-avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-serif); font-size: 2.5rem; color: var(--accent);
+      flex-shrink: 0; border: 0.5px solid rgba(24,95,165,0.2);
+      overflow: hidden;
+    }
+    /* If you add a real photo: <img src="photo.jpg" alt="Your Name"> inside .hero-avatar */
+    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+      padding: 2rem 0; display: flex; gap: 0;
+    }
+    .stat { flex: 1; padding: 0 2rem; border-right: 0.5px solid var(--border); }
+    .stat:first-child { padding-left: 0; }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: var(--ff-serif); font-size: 2rem; }
+    .stat-label { font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 0; }
+    .section-header { margin-bottom: 2.5rem; }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .section-title { font-family: var(--ff-serif); font-size: 1.8rem; line-height: 1.2; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;
+    }
+    .skill-card {
+      background: var(--card-bg); border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 1.25rem;
+    }
+    .skill-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+    .skill-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; }
+    .skill-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .skill-tools { font-size: 12px; color: var(--ink-muted); }
+
+    /* ── PROJECTS ── */
+    .projects-list {
+      display: flex; flex-direction: column; gap: 1px;
+      border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden;
+    }
+    .project-row {
+      background: var(--card-bg); padding: 1.5rem;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 1rem;
+      border-bottom: 0.5px solid var(--border);
+      transition: background 0.15s; cursor: pointer;
+    }
+    .project-row:last-child { border-bottom: none; }
+    .project-row:hover { background: var(--accent-light); }
+    .project-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-light);
+      padding: 3px 10px; border-radius: 100px; display: inline-block; margin-bottom: 6px;
+    }
+    .project-name { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .project-desc { font-size: 13px; color: var(--ink-muted); }
+    .project-arrow { font-size: 20px; color: var(--ink-muted); }
+
+    /* ── TOOLS ── */
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-pill {
+      font-size: 13px; padding: 6px 16px; border-radius: 100px;
+      border: 0.5px solid var(--border); background: var(--card-bg); color: var(--ink-muted);
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: var(--ink); color: var(--cream);
+      border-radius: 16px; padding: 3rem; text-align: center;
+    }
+    .contact-box h2 { font-family: var(--ff-serif); font-size: 2rem; margin-bottom: 0.75rem; }
+    .contact-box p { color: rgba(250,249,246,0.6); font-size: 15px; margin-bottom: 2rem; }
+    .contact-btn {
+      font-family: var(--ff-sans); font-size: 14px; font-weight: 500;
+      padding: 11px 28px; border-radius: 100px;
+      background: var(--cream); color: var(--ink); border: none; cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .contact-btn:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border); padding: 1.5rem 0;
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: var(--ink-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-avatar { display: none; }
+      .nav-links { display: none; }
+      .stats-strip { flex-direction: column; gap: 1.5rem; }
+      .stat { border-right: none; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">Your Name</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact"><button class="nav-cta">Hire Me</button></a>
+  </nav>
+
+  <div class="wrapper">
+
+    <!-- ── HERO ── -->
+    <div class="hero">
+      <div>
+        <div class="hero-eyebrow">Data Analyst</div>
+        <!-- EDIT: Change the headline to something personal -->
+        <h1>Turning data into <em>decisions</em></h1>
+        <!-- EDIT: Write a 1-2 sentence description of yourself -->
+        <p class="hero-sub">I help businesses make sense of their numbers — from messy spreadsheets to clean dashboards and actionable insights.</p>
+        <div class="hero-actions">
+          <a href="#work"><button class="btn-primary">View My Work</button></a>
+          <!-- EDIT: Link this to your actual CV file e.g. href="cv.pdf" -->
+          <a href="#"><button class="btn-ghost">Download CV</button></a>
+        </div>
+      </div>
+      <!-- EDIT: Replace "YN" with your initials, or swap for a real photo (see CSS comment above) -->
+      <div class="hero-avatar">YN</div>
+    </div>
+
+    <!-- ── STATS ── -->
+    <div class="stats-strip">
+      <!-- EDIT: Update these numbers to reflect your real experience -->
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years of experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Reports built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Data-driven</div>
+      </div>
+    </div>
+
+    <!-- ── SKILLS ── -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="section-eyebrow">What I Do</div>
+        <div class="section-title">Skills & Expertise</div>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="skill-name">Spreadsheet Design</div>
+          <div class="skill-tools">Google Sheets · Excel · Pivot Tables · Dynamic Formulas</div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="skill-name">Data Reporting</div>
+          <div class="skill-tools">VLOOKUP · IF · INDIRECT · Conditional Formatting</div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="skill-name">Automation</div>
+          <div class="skill-tools">Google Apps Script · Macros · Workflow Automation</div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="skill-name">Data Visualization</div>
+          <div class="skill-tools">Charts · Dashboards · KPI Tracking</div>
+        </div>
+
+        <!-- EDIT: Add more skill cards by copying one block above -->
+
+      </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section id="work" style="padding-top: 0;">
+      <div class="section-header">
+        <div class="section-eyebrow">Portfolio</div>
+        <div class="section-title">Selected Projects</div>
+      </div>
+      <div class="projects-list">
+
+        <!-- EDIT: Replace these with your real projects. Add href to link to a live demo or case study -->
+        <a href="#">
+          <div class="project-row">
+            <div>
+              <div class="project-tag">Automation</div>
+              <div class="project-name">Monthly Sales Report Generator</div>
+              <div class="project-desc">Built an Apps Script that auto-pulls data from 5 sheets and emails a formatted PDF report every month.</div>
+            </div>
+            <div class="project-arrow">→</div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="project-row">
+            <div>
+              <div class="project-tag">Dashboard</div>
+              <div class="project-name">Inventory Tracking Dashboard</div>
+              <div class="project-desc">Dynamic Google Sheets dashboard with INDIRECT-based dropdowns and real-time stock alerts via conditional formatting.</div>
+            </div>
+            <div class="project-arrow">→</div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="project-row">
+            <div>
+              <div class="project-tag">Analysis</div>
+              <div class="project-name">Customer Retention Analysis</div>
+              <div class="project-desc">Used pivot tables and VLOOKUP to identify churn patterns across 3 years of customer data.</div>
+            </div>
+            <div class="project-arrow">→</div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── TOOLS ── -->
+    <section style="padding-top: 0;">
+      <div class="section-header">
+        <div class="section-eyebrow">Toolbox</div>
+        <div class="section-title">Tools I Work With</div>
+      </div>
+      <!-- EDIT: Add or remove tools as needed -->
+      <div class="tools-grid">
+        <div class="tool-pill">Google Sheets</div>
+        <div class="tool-pill">Microsoft Excel</div>
+        <div class="tool-pill">Google Apps Script</div>
+        <div class="tool-pill">JavaScript</div>
+        <div class="tool-pill">HTML & CSS</div>
+        <div class="tool-pill">Google Looker Studio</div>
+        <div class="tool-pill">Google Forms</div>
+        <div class="tool-pill">Notion</div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" style="padding-top: 0;">
+      <div class="contact-box">
+        <h2>Let's work together</h2>
+        <p>Have a messy spreadsheet or a reporting problem? I'd love to help.</p>
+        <!-- EDIT: Replace with your real email address -->
+        <a href="mailto:yourname@email.com">
+          <button class="contact-btn">yourname@email.com</button>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <!-- EDIT: Update your name and location -->
+      <span>© 2026 Your Name</span>
+      <span>Data Analyst · Philippines</span>
+    </footer>
+
+  </div><!-- end .wrapper -->
+
+</body>
+</html>
