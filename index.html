@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Name — Data Analyst</title>
+  <title>Gabriel Vega — Data Analyst</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,6 +14,8 @@
       --ink-muted: #5f5e5a;
       --accent: #185FA5;
       --accent-light: #E6F1FB;
+      --accent-green: #166534;
+      --accent-green-light: #DCFCE7;
       --border: rgba(0,0,0,0.1);
       --card-bg: #ffffff;
       --ff-serif: 'DM Serif Display', Georgia, serif;
@@ -99,7 +101,6 @@
       flex-shrink: 0; border: 0.5px solid rgba(24,95,165,0.2);
       overflow: hidden;
     }
-    /* If you add a real photo: <img src="photo.jpg" alt="Your Name"> inside .hero-avatar */
     .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ── STATS STRIP ── */
@@ -140,9 +141,9 @@
     .skill-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
     .skill-tools { font-size: 12px; color: var(--ink-muted); }
 
-    /* ── PROJECTS ── */
+    /* ── PROJECTS LIST (data) ── */
     .projects-list {
-      display: flex; flex-direction: column; gap: 1px;
+      display: flex; flex-direction: column;
       border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden;
     }
     .project-row {
@@ -162,6 +163,52 @@
     .project-name { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
     .project-desc { font-size: 13px; color: var(--ink-muted); }
     .project-arrow { font-size: 20px; color: var(--ink-muted); }
+
+    /* ── WEB DEV CARDS ── */
+    .webdev-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
+    }
+    .webdev-card {
+      background: var(--card-bg); border: 0.5px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      transition: box-shadow 0.15s;
+    }
+    .webdev-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .webdev-thumb {
+      height: 120px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      overflow: hidden;
+      background: var(--border);
+    }
+
+    .webdev-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .webdev-body { padding: 1rem 1.25rem 1.25rem; }
+    .webdev-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent-green); background: var(--accent-green-light);
+      padding: 3px 10px; border-radius: 100px; display: inline-block; margin-bottom: 8px;
+    }
+    .webdev-name { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .webdev-desc { font-size: 12px; color: var(--ink-muted); margin-bottom: 1rem; }
+    .webdev-links { display: flex; gap: 8px; }
+    .webdev-link {
+      font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 100px;
+      border: 0.5px solid var(--border);
+      background: transparent; color: var(--ink);
+      cursor: pointer; transition: background 0.15s;
+    }
+    .webdev-link:hover { background: var(--cream); }
+    .webdev-link.primary {
+      background: var(--ink); color: var(--cream); border-color: var(--ink);
+    }
+    .webdev-link.primary:hover { opacity: 0.8; }
 
     /* ── TOOLS ── */
     .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -204,11 +251,12 @@
 </head>
 <body>
 
-  <!-- ── NAV ── -->
+  <!-- ── NAV ── -->  
   <nav>
-    <div class="nav-logo">Your Name</div>
+    <div class="nav-logo">Gabriel Vega</div>
     <div class="nav-links">
-      <a href="#work">Work</a>
+      <a href="#data-work">Data Work</a>
+      <a href="#web-work">Personal Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
@@ -220,24 +268,23 @@
     <!-- ── HERO ── -->
     <div class="hero">
       <div>
-        <div class="hero-eyebrow">Data Analyst</div>
-        <!-- EDIT: Change the headline to something personal -->
+        <div class="hero-eyebrow">Data Analyst & Web Developer</div>
         <h1>Turning data into <em>decisions</em></h1>
-        <!-- EDIT: Write a 1-2 sentence description of yourself -->
-        <p class="hero-sub">I help businesses make sense of their numbers — from messy spreadsheets to clean dashboards and actionable insights.</p>
+        <p class="hero-sub">I help businesses make sense of their numbers — from messy spreadsheets to clean dashboards and actionable insights. I also build things for the web.</p>
         <div class="hero-actions">
-          <a href="#work"><button class="btn-primary">View My Work</button></a>
-          <!-- EDIT: Link this to your actual CV file e.g. href="cv.pdf" -->
+          <a href="#data-work"><button class="btn-primary">View My Work</button></a>
+          <!-- EDIT: link to your real CV when ready e.g. href="cv.pdf" -->
           <a href="#"><button class="btn-ghost">Download CV</button></a>
         </div>
       </div>
-      <!-- EDIT: Replace "YN" with your initials, or swap for a real photo (see CSS comment above) -->
-      <div class="hero-avatar">YN</div>
+      <!-- EDIT: replace "GV" with a real photo when ready:
+           remove the "GV" text and add <img src="photo.jpg" alt="Gabriel Vega"> -->
+      <div class="hero-avatar">GV</div>
     </div>
 
     <!-- ── STATS ── -->
     <div class="stats-strip">
-      <!-- EDIT: Update these numbers to reflect your real experience -->
+      <!-- EDIT: update these to your real numbers -->
       <div class="stat">
         <div class="stat-num">3+</div>
         <div class="stat-label">Years of experience</div>
@@ -292,20 +339,26 @@
           <div class="skill-tools">Charts · Dashboards · KPI Tracking</div>
         </div>
 
-        <!-- EDIT: Add more skill cards by copying one block above -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="skill-name">Web Development</div>
+          <div class="skill-tools">HTML · CSS · JavaScript · Responsive Design</div>
+        </div>
 
       </div>
     </section>
 
-    <!-- ── PROJECTS ── -->
-    <section id="work" style="padding-top: 0;">
+    <!-- ── DATA PROJECTS ── -->
+    <section id="data-work" style="padding-top: 0;">
       <div class="section-header">
-        <div class="section-eyebrow">Portfolio</div>
-        <div class="section-title">Selected Projects</div>
+        <div class="section-eyebrow">Data Portfolio</div>
+        <div class="section-title">Spreadsheet & Analytics Work</div>
       </div>
       <div class="projects-list">
 
-        <!-- EDIT: Replace these with your real projects. Add href to link to a live demo or case study -->
+        <!-- EDIT: replace these with your real data projects -->
         <a href="#">
           <div class="project-row">
             <div>
@@ -342,13 +395,70 @@
       </div>
     </section>
 
+    <!-- ── WEB DEV PROJECTS ── -->
+    <section id="web-work" style="padding-top: 0;">
+      <div class="section-header">
+        <div class="section-eyebrow">Personal Projects</div>
+        <div class="section-title">Web Dev</div>
+      </div>
+      <div class="webdev-grid">
+
+        <div class="webdev-card">
+          <div class="webdev-thumb">
+            <img src="images/calculator.png" alt="Calculator project screenshot">
+          </div>
+          <div class="webdev-body">
+            <div class="webdev-tag">JavaScript</div>
+            <div class="webdev-name">Calculator</div>
+            <div class="webdev-desc">A fully functional browser calculator.</div>
+            <div class="webdev-links">
+              <!-- EDIT: replace # with your live GitHub Pages link -->
+              <a href="https://gagaaab.github.io/odin-calculator/" class="webdev-link primary">Live Demo</a>
+              <!-- EDIT: replace # with your GitHub repo link -->
+              <a href="https://github.com/gagaaab/odin-calculator" class="webdev-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="webdev-card">
+          <div class="webdev-thumb">
+            <img src="images/etch-a-sketch.png" alt="Etch-a-Sketch project screenshot">
+          </div>
+          <div class="webdev-body">
+            <div class="webdev-tag">JavaScript</div>
+            <div class="webdev-name">Etch-a-Sketch</div>
+            <div class="webdev-desc">An interactive drawing pad where you can change grid size and draw with color.</div>
+            <div class="webdev-links">
+              <a href="https://gagaaab.github.io/odin-etch-a-sketch/" class="webdev-link primary">Live Demo</a>
+              <a href="https://github.com/gagaaab/odin-etch-a-sketch" class="webdev-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="webdev-card">
+          <div class="webdev-thumb">
+            <img src="images/rock-paper-scissors.png" alt="Rock, paper, scissors project screenshot">
+          </div>
+          <div class="webdev-body">
+            <div class="webdev-tag">JavaScript</div>
+            <div class="webdev-name">Rock Paper Scissors</div>
+            <div class="webdev-desc">A classic game against the computer with score tracking.</div>
+            <div class="webdev-links">
+              <a href="https://gagaaab.github.io/odin-rock-paper-scissors/" class="webdev-link primary">Live Demo</a>
+              <a href="https://github.com/gagaaab/odin-rock-paper-scissors" class="webdev-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ── TOOLS ── -->
     <section style="padding-top: 0;">
       <div class="section-header">
         <div class="section-eyebrow">Toolbox</div>
         <div class="section-title">Tools I Work With</div>
       </div>
-      <!-- EDIT: Add or remove tools as needed -->
       <div class="tools-grid">
         <div class="tool-pill">Google Sheets</div>
         <div class="tool-pill">Microsoft Excel</div>
@@ -357,7 +467,8 @@
         <div class="tool-pill">HTML & CSS</div>
         <div class="tool-pill">Google Looker Studio</div>
         <div class="tool-pill">Google Forms</div>
-        <div class="tool-pill">Notion</div>
+        <div class="tool-pill">Git & GitHub</div>
+        <div class="tool-pill">VS Code</div>
       </div>
     </section>
 
@@ -365,19 +476,17 @@
     <section id="contact" style="padding-top: 0;">
       <div class="contact-box">
         <h2>Let's work together</h2>
-        <p>Have a messy spreadsheet or a reporting problem? I'd love to help.</p>
-        <!-- EDIT: Replace with your real email address -->
-        <a href="mailto:yourname@email.com">
-          <button class="contact-btn">yourname@email.com</button>
+        <p>Have a messy spreadsheet or a web project in mind? I'd love to help.</p>
+        <a href="mailto:glvega.cc@gmail.com">
+          <button class="contact-btn">glvega.cc@gmail.com</button>
         </a>
       </div>
     </section>
 
-    <!-- ── FOOTER ── -->
+    <!-- ── FOOTER ── */
     <footer>
-      <!-- EDIT: Update your name and location -->
-      <span>© 2026 Your Name</span>
-      <span>Data Analyst · Philippines</span>
+      <span>© 2026 Gabriel Vega</span>
+      <span>Data Analyst · Web Developer · Philippines</span>
     </footer>
 
   </div><!-- end .wrapper -->
